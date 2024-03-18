@@ -41,7 +41,7 @@
     "release:github": "pnpm run add:all && pnpm run commit && pnpm run update:changelog && pnpm run push:master",
 
     "add:changelog:only": "git add CHANGELOG.md",
-    "push:changelog:only": "pnpm run commit' && git push origin master",
+    "push:changelog:only": "pnpm run commit && git push origin master",
     "release:github:changelog:only": "pnpm run add:changelog:only && pnpm run push:changelog:only"
   },
   "config": {
