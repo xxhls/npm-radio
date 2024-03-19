@@ -43,7 +43,8 @@
     "release:github": "pnpm run add:all && pnpm run commit && pnpm run update:changelog && pnpm run push:master",
     "add:changelog:only": "git add CHANGELOG.md",
     "push:changelog:only": "pnpm run commit && git push origin master",
-    "release:github:changelog:only": "pnpm run add:changelog:only && pnpm run push:changelog:only"
+    "release:github:changelog:only": "pnpm run add:changelog:only && pnpm run push:changelog:only",
+    "download:dep": "git add package.json && git add pnpm-lock.yaml && pnpm commit && pnpm push:master"
   },
   "config": {
     "commitizen": {
@@ -51,6 +52,8 @@
     }
   },
   "devDependencies": {
+    "@types/node": "^20.11.29",
+    "@types/nodemailer": "^6.4.14",
     "commitizen": "^4.3.0",
     "conventional-changelog-cli": "^4.1.0",
     "cz-conventional-changelog": "^3.3.0",
