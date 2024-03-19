@@ -20,6 +20,9 @@ dependencies:
   nodemailer:
     specifier: ^6.9.12
     version: 6.9.12
+  silly-datetime:
+    specifier: ^0.1.2
+    version: 0.1.2
 
 devDependencies:
   '@parcel/packager-ts':
@@ -4639,6 +4642,10 @@ packages:
   /signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
+
+  /silly-datetime@0.1.2:
+    resolution: {integrity: sha512-q8hnO91rRvQsYTYaZCJc6UpljzfdmWD3bNljDLKGVBT2ukj7snE+ENkVVkXfo529ABLEBeN6PHoEaT1ONEq81w==}
+    dev: false
 
   /slice-ansi@1.0.0:
     resolution: {integrity: sha512-POqxBK6Lb3q6s047D/XsDVNPnF9Dl8JSaqe9h9lURl0OdNqy/ujDrOiIHtsqXMGbWWTIomRzAMaTyawAU//Reg==}

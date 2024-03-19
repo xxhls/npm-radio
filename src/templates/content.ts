@@ -2,8 +2,8 @@ export interface ContentOption {
     name: string,
     description: string,
     latest: string,
-    latestDownloads: string,
-    latestWeek: string,
+    yesterdayDownloads: string,
+    yesterdayDate: string,
 };
 
 export const getContent = (options: Array<ContentOption>) => {
@@ -13,7 +13,7 @@ export const getContent = (options: Array<ContentOption>) => {
             Hello, this is your daily report.
             ${options.map((option) => {
                 return `
-                ${option.name} v${option.latest} (${option.description}) has ${option.latestDownloads} downloads in the last ${option.latestWeek}.
+                ${option.name} v${option.latest} (${option.description}) has ${option.yesterdayDownloads} downloads in the ${option.yesterdayDate}.
                 `;
             }).join("\n")}
     `;

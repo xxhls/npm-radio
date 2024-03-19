@@ -45,7 +45,7 @@ const main = async () => {
      * 3. Generate email content
      */
     const instance = axios.create({
-        baseURL: "https://www.npmjs.com/package",
+        baseURL: "https://registry.npmmirror.com/",
         timeout: 10000,
         headers: {
             "Accept": "*/*",
@@ -69,24 +69,60 @@ const main = async () => {
                 name: packageName,
                 description: "Failed to get package info",
                 latest: "Failed to get package info",
-                latestDownloads: 'Failed to get package info',
-                latestWeek: 'Failed to get package info',
+                yesterdayDate: 'Failed to get package info',
+                yesterdayDownloads: 'Failed to get package info',
             });
         } else {
             success(`Got package info for ${packageName}`);
-            const name = response.data["capsule"]["name"];
-            const description = response.data["capsule"]["description"];
-            const latest = response.data["capsule"]["dist-tags"]["latest"];
-            const downloads = response.data["downloads"];
-            const latestDownloads = downloads[downloads.length - 1]["downloads"];
-            const latestWeek = downloads[downloads.length - 1]["label"];
+            const name = response.data["name"];
+            const description = response.data["description"];
+            const latest = response.data["dist-tags"]["latest"];
+
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0];
+            info(`Today: ${todayStr}`);
+
+            const yesterday = new Date(today);
+            yesterday.setDate(today.getDate() - 1);
+            const yesterdayStr = yesterday.toISOString().split('T')[0];
+            if (!yesterdayStr) {
+                error("Failed to get yesterday date");
+            }
+            info(`Yesterday: ${yesterdayStr}`);
+
+            const response_2 = await instance.get(`/downloads/range/${yesterdayStr}:${todayStr}/${packageName}`);
+            if (response_2.status !== 200) {
+                warn(`Failed to get package downloads for ${packageName}`);
+                infoList.push({
+                    name,
+                    description,
+                    latest,
+                    yesterdayDate: 'Failed to get package downloads',
+                    yesterdayDownloads: 'Failed to get package downloads',
+                });
+                return;
+            }
+
+            interface Download {
+                day: string;
+                downloads: number;
+            }
+            const downloads = response_2.data.downloads as Array<Download>;
+            let downloadsYesterday = 0;
+            downloads.forEach(element => {
+                if (element.day === yesterdayStr) {
+                    downloadsYesterday = element.downloads;
+                }
+            });
+
+            success(`Got package downloads for ${packageName} in ${yesterdayStr}: ${downloadsYesterday}`);
 
             infoList.push({
                 name,
                 description,
                 latest,
-                latestDownloads,
-                latestWeek,
+                yesterdayDate: yesterdayStr!,
+                yesterdayDownloads: String(downloadsYesterday),
             });
         }
     };
