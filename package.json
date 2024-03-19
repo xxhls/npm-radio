@@ -52,6 +52,7 @@
     }
   },
   "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
     "@types/node": "^20.11.29",
     "@types/nodemailer": "^6.4.14",
     "commitizen": "^4.3.0",
