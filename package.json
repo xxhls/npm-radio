@@ -8,8 +8,11 @@
     "typescript",
     "vite"
   ],
-  "homepage": "",
-  "bugs": {},
+  "homepage": "https://github.com/xxhls/npm-radio",
+  "bugs": {
+    "url": "https://github.com/xxhls/npm-radio/issues",
+    "email": "heyq020814@qq.com"
+  },
   "license": "MIT",
   "author": {
     "name": "xxhls",
@@ -30,7 +33,7 @@
   "bin": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "https://github.com/xxhls/npm-radio"
   },
   "scripts": {
     "commit": "cz",
