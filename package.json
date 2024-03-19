@@ -61,7 +61,8 @@
     "clean": "node bin/clean.js",
     "upload:remote:js": "scp dist/index.js  root@47.116.52.127:/root/npm-radio/index.js",
     "upload:remote:pkg": "scp package.json  root@47.116.52.127:/root/npm-radio/package.json && scp pnpm-lock.yaml  root@47.116.52.127:/root/npm-radio/pnpm-lock.yaml",
-    "upload:remote:env": "scp .env  root@47.116.52.127:/root/npm-radio/.env"
+    "upload:remote:env": "scp .env  root@47.116.52.127:/root/npm-radio/.env",
+    "upload:remote": "pnpm run upload:remote:js && pnpm run upload:remote:pkg && pnpm run upload:remote:env"
   },
   "config": {
     "commitizen": {
