@@ -19,12 +19,18 @@ devDependencies:
   '@tsconfig/node20':
     specifier: ^20.1.2
     version: 20.1.2
+  '@types/chalk':
+    specifier: ^2.2.0
+    version: 2.2.0
   '@types/node':
     specifier: ^20.11.29
     version: 20.11.29
   '@types/nodemailer':
     specifier: ^6.4.14
     version: 6.4.14
+  chalk:
+    specifier: ^5.3.0
+    version: 5.3.0
   commitizen:
     specifier: ^4.3.0
     version: 4.3.0(@types/node@20.11.29)(typescript@5.4.2)
@@ -179,6 +185,13 @@ packages:
 
   /@tsconfig/node20@20.1.2:
     resolution: {integrity: sha512-madaWq2k+LYMEhmcp0fs+OGaLFk0OenpHa4gmI4VEmCKX4PJntQ6fnnGADVFrVkBj0wIdAlQnK/MrlYTHsa1gQ==}
+    dev: true
+
+  /@types/chalk@2.2.0:
+    resolution: {integrity: sha512-1zzPV9FDe1I/WHhRkf9SNgqtRJWZqrBWgu7JGveuHmmyR9CnAPCie2N/x+iHrgnpYBIcCJWHBoMRv2TRWktsvw==}
+    deprecated: This is a stub types definition for chalk (https://github.com/chalk/chalk). chalk provides its own type definitions, so you don't need @types/chalk installed!
+    dependencies:
+      chalk: 5.3.0
     dev: true
 
   /@types/conventional-commits-parser@5.0.0:
@@ -384,7 +397,6 @@ packages:
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     requiresBuild: true
     dev: true
-    optional: true
 
   /chardet@0.4.2:
     resolution: {integrity: sha512-j/Toj7f1z98Hh2cYo2BVr85EpIRWqUi7rtRSGxh/cqUjqrnJe9l9UE7IUGd2vQ2p+kSHLkSzObQPZPLUC6TQwg==}
