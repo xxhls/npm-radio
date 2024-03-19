@@ -1,13 +1,27 @@
+import { join } from "path";
+import fs from "fs-extra";
 import { configDotenv } from "dotenv";
 import { info, warn, error } from "./log/index";
 
 const main = async () => {
-    // Load environment variables from .env file
+    
+    /**
+     * Load environment variables from .env file
+     * 
+     * 1. Check if .env file exists
+     * 2. Load environment variables from .env file
+     * 3. Check if QQMAIL_user and QQMAIL_PWD are set
+     */
+    const envPath = join(process.cwd(), ".env");
+    if (!fs.existsSync(envPath)) {
+        warn("No .env file found");
+        return;
+    }
     try {
         configDotenv();
     } catch (__error) {
         error("Failed to load environment variables from .env file");
-        info("Please make sure you have a .env file in the root directory");
+        console.error(__error);
     }
     const { QQMAIL_user, QQMAIL_PWD } = process.env;
     info("Environment variables are loaded from .env file");
