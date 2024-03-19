@@ -26,14 +26,14 @@ const main = async () => {
         error("Failed to load environment variables from .env file");
         console.error(__error);
     }
-    const { QQMAIL_user, QQMAIL_PWD } = process.env;
+    const { QQMAIL_USER, QQMAIL_PWD } = process.env;
     success("Environment variables are loaded from .env file");
-    if (!QQMAIL_user || !QQMAIL_PWD) {
+    if (!QQMAIL_USER || !QQMAIL_PWD) {
         warn("Please set QQMAIL_user and QQMAIL_PWD in .env file");
         return;
     } else {
         success("QQMAIL_user and QQMAIL_PWD are set");
-        info(`QQMAIL_user: ${QQMAIL_user}`);
+        info(`QQMAIL_user: ${QQMAIL_USER}`);
         info(`QQMAIL_PWD: ${QQMAIL_PWD}`);
     }
 
@@ -110,15 +110,15 @@ const main = async () => {
         service: "qq",
         secure: true,
         auth: {
-            user: QQMAIL_user,
+            user: QQMAIL_USER,
             pass: QQMAIL_PWD,
         },
     });
 
     info("Email text is generating...");
     const mailOptions = {
-        from: QQMAIL_user,
-        to: QQMAIL_user,
+        from: QQMAIL_USER,
+        to: QQMAIL_USER,
         subject: "Daily Report",
         text: getContent(infoList),
     };
