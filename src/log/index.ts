@@ -15,3 +15,7 @@ export const warn = (message: string) => {
 export const error = (message: string) => {
     console.log(chalk.white.bgRed.bold(" ERROR \t"), chalk.red(message));
 }
+
+export const success = (message: string) => {
+    console.log(chalk.white.bgGreen.bold(" SUCCE \t"), chalk.green(message));
+}
