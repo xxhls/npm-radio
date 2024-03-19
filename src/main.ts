@@ -2,6 +2,7 @@ import { join } from "path";
 import fs from "fs-extra";
 import { configDotenv } from "dotenv";
 import { info, warn, error } from "./log/index";
+import { createTransport } from "nodemailer";
 
 const main = async () => {
     
@@ -34,6 +35,28 @@ const main = async () => {
         info(`QQMAIL_PWD: ${QQMAIL_PWD}`);
     }
 
+    const transporter = createTransport({
+        service: "qq",
+        secure: true,
+        auth: {
+            user: QQMAIL_user,
+            pass: QQMAIL_PWD,
+        },
+    });
+
+    const mailOptions = {
+        from: QQMAIL_user,
+        to: QQMAIL_user,
+        subject: "Hello",
+        text: "Hello world?",
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.error(error);
+        }
+        console.log("Message sent: %s", info.messageId);
+    });
 };
 
 main();
